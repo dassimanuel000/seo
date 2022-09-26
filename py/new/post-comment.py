@@ -227,11 +227,11 @@ def avis_therapeute(author, e_mail,comment):
         
     num1 = random.randint(1, 15)
     
-    try:
+    try:                                      #/html/body/div[1]/div/div/main/div/div[2]/div/section/div[10]/a
         links = driver.find_element(By.XPATH, '/html/body/div[1]/div/div/main/div/div[2]/section/div[2]/div[2]/div['+str(num1)+']/a')
         step1 = (links.get_attribute('href'))
-    except NoSuchElementException:
-        links = driver.find_element(By.XPATH, '/html/body/div[1]/div/div/main/div/div[2]/section/div[3]/div['+str(num1)+']/a')
+    except NoSuchElementException:             #/html/body/div[1]/div/div/main/div/div[2]/div/section/div[23]/a
+        links = driver.find_element(By.XPATH, '/html/body/div[1]/div/div/main/div/div[2]/div/section/div['+str(num1)+']/a')
         step1 = (links.get_attribute('href'))
     
     driver.get(step1)
@@ -245,7 +245,7 @@ def avis_therapeute(author, e_mail,comment):
         author = driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div[4]/section/div['+str(num1)+']/article/aside/div/a/span')
         author = (author.get_attribute('innerHTML'))
     except NoSuchElementException:  #spelling error making this code not work as expected
-        avis_therapeute()
+        avis_therapeute(author, e_mail,comment)
     print(author)
     
     try:
@@ -253,7 +253,7 @@ def avis_therapeute(author, e_mail,comment):
         title = driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div[4]/section/div['+str(num1)+']/article/section/div[2]/a/h2')
         title = (title.get_attribute('innerHTML'))
     except NoSuchElementException:  #spelling error making this code not work as expected
-        avis_therapeute()
+        avis_therapeute(author, e_mail,comment)
     print(title)
 
     try:
@@ -261,7 +261,7 @@ def avis_therapeute(author, e_mail,comment):
         comment = driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div[4]/section/div['+str(num1)+']/article/section/div[2]/p[1]')
         comment = (comment.get_attribute('innerHTML'))
     except NoSuchElementException:  #spelling error making this code not work as expected
-        avis_therapeute()
+        avis_therapeute(author, e_mail,comment)
     print(comment)
     
     driver.get("https://ucoz.fr/avis/trouver-un-therapeute-avis/")
